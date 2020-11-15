@@ -24,11 +24,16 @@ public class RegistActivity extends AppCompatActivity {
 
     File file = null;
     ImageView imageView;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
+
+        //id 가져오기
+        Intent intent = getIntent();
+        username =intent.getStringExtra("Username");
 
         imageView = (ImageView) findViewById(R.id.imageView);
 
@@ -134,5 +139,11 @@ public class RegistActivity extends AppCompatActivity {
     public void BackClick(View v)
     {
         finish();
+    }
+
+    public void btClick(View v) { //추천레시피메뉴
+        Intent intent=new Intent(this,MainActivity.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
     }
 }
